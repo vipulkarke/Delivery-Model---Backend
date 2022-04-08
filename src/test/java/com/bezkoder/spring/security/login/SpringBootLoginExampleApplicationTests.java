@@ -1,10 +1,10 @@
-package com.example.Deliveryapp.Backend;
+package com.bezkoder.spring.security.login;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DeliveryAppBackendApplicationTests {
+class SpringBootLoginExampleApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.example.Deliveryapp.Backend;
+package com.bezkoder.spring.login;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DeliveryAppBackendApplication {
+public class SpringBootLoginExampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DeliveryAppBackendApplication.class, args);
+		SpringApplication.run(SpringBootLoginExampleApplication.class, args);
 	}
 
 }
