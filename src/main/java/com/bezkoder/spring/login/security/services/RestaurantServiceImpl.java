@@ -2,9 +2,9 @@ package com.bezkoder.spring.login.security.services;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.bezkoder.spring.login.models.Restaurant;
 import com.bezkoder.spring.login.repository.RestaurantRepository;
 
@@ -19,6 +19,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Override
 	public List<Restaurant> getAllUsers() {
 		return (List<Restaurant>) restRepo.findAll();
+	}
+
+
+	@Override
+	public Restaurant get_A_User(Integer id) {
+		return restRepo.findById(id).orElseThrow();
 	}
 
 }
