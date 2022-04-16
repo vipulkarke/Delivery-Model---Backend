@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.bezkoder.spring.login.models.Mcdonald_menu;
 
 import com.bezkoder.spring.login.repository.McDonaldRepo;
-
 @Service
 public class McDonaldServiceImpl implements McDonaldsService{
 
@@ -20,5 +19,7 @@ public class McDonaldServiceImpl implements McDonaldsService{
 		return (List<Mcdonald_menu>) mcRepo.findAll();
 		
 	}
+
+
 
 }

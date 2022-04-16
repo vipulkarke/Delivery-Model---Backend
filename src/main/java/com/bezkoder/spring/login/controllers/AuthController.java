@@ -25,8 +25,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bezkoder.spring.login.models.BellyDarbar;
 import com.bezkoder.spring.login.models.ERole;
+import com.bezkoder.spring.login.models.Icecream;
 import com.bezkoder.spring.login.models.Mcdonald_menu;
+import com.bezkoder.spring.login.models.Menu;
 import com.bezkoder.spring.login.models.OvenStory;
 import com.bezkoder.spring.login.models.Restaurant;
 import com.bezkoder.spring.login.models.Role;
@@ -41,7 +44,10 @@ import com.bezkoder.spring.login.repository.RestaurantRepository;
 import com.bezkoder.spring.login.repository.RoleRepository;
 import com.bezkoder.spring.login.repository.UserRepository;
 import com.bezkoder.spring.login.security.jwt.JwtUtils;
+import com.bezkoder.spring.login.security.services.BellyService;
+import com.bezkoder.spring.login.security.services.IceCreamService;
 import com.bezkoder.spring.login.security.services.McDonaldsService;
+import com.bezkoder.spring.login.security.services.MenuService;
 import com.bezkoder.spring.login.security.services.OvenService;
 import com.bezkoder.spring.login.security.services.RestaurantService;
 import com.bezkoder.spring.login.security.services.UserDetailsImpl;
@@ -53,17 +59,26 @@ public class AuthController {
   @Autowired
   AuthenticationManager authenticationManager;
 
+//  @Autowired
+//	private McDonaldRepo mcRepo;
+//  
+//  @Autowired
+//  private OvenRepo ovenRepo;
+//  
   @Autowired
-	private McDonaldRepo mcRepo;
-  
-  @Autowired
-  private OvenRepo ovenRepo;
+  private IceCreamService IceService;
   
   @Autowired
   private OvenService ovenService;
   
  @Autowired
  private McDonaldsService McService;
+ 
+ @Autowired
+ private BellyService bellyService;
+ 
+ @Autowired
+ MenuService menuService;
  
 	@Autowired
 	RestaurantService restService;
@@ -73,6 +88,7 @@ public class AuthController {
 
   @Autowired
   RoleRepository roleRepository;
+  
 
   @Autowired
   PasswordEncoder encoder;
@@ -172,6 +188,12 @@ public class AuthController {
 		Restaurant user = restService.get_A_User(id);
 		return new ResponseEntity<Restaurant>(user,HttpStatus.OK);
 	}
+  @GetMapping("/restaurants/{id}")
+	public ResponseEntity<Menu> getRestMenu( @PathVariable("id") Integer fk_id){
+//		Restaurant user = restService.get_A_User(id) ;
+		Menu user1 = menuService.getMenu(fk_id);
+		return new ResponseEntity<Menu>(user1,HttpStatus.OK);
+	}
   
   @GetMapping("/mcdonald_menu")
   public ResponseEntity<List<Mcdonald_menu>> getAll(){
@@ -184,5 +206,17 @@ public class AuthController {
 		List<OvenStory> getall = ovenService.getAllOven();
 		return new ResponseEntity<List<OvenStory>>(getall, HttpStatus.OK);	
 	}
+  @GetMapping("/icecream")
+  public ResponseEntity<List<Icecream>> getAllIceCream(){
+		List<Icecream> getall = IceService.getAllIce();
+		return new ResponseEntity<List<Icecream>>(getall, HttpStatus.OK);	
+	}
+  @GetMapping("/bellydarbar")
+  public ResponseEntity<List<BellyDarbar>> getAllffood(){
+		List<BellyDarbar> getall = bellyService.getAllmenu();
+		return new ResponseEntity<List<BellyDarbar>>(getall, HttpStatus.OK);	
+	}
+ 
+  
   
 }

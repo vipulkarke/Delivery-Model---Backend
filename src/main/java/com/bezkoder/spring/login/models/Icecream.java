@@ -5,8 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "mcdonald_menu")
-public class Mcdonald_menu {
+@Table(name = "baskinrobbins_menu")
+public class Icecream {
 	@Id
 	public int food_id;
 	public String food_name;
@@ -50,9 +50,7 @@ public class Mcdonald_menu {
 	public void setFood_image(String food_image) {
 		this.food_image = food_image;
 	}
-
-	
-	public Mcdonald_menu(int food_id, String food_name, String food_cost, String food_categorie, String food_disc,
+	public Icecream(int food_id, String food_name, String food_cost, String food_categorie, String food_disc,
 			String food_image) {
 		super();
 		this.food_id = food_id;
@@ -61,9 +59,8 @@ public class Mcdonald_menu {
 		this.food_categorie = food_categorie;
 		this.food_disc = food_disc;
 		this.food_image = food_image;
-		
 	}
-	public Mcdonald_menu() {
+	public Icecream() {
 		super();
 	}
 	

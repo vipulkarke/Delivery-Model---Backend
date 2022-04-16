@@ -2,17 +2,23 @@ package com.bezkoder.spring.login.models;
 
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "restaurants_cards")
 public class Restaurant {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	private int id;
 	private String rest_name;
 	private String rest_address;
@@ -20,8 +26,11 @@ public class Restaurant {
 	private String delivery_time;
 	private String cost;
 	private String image_Url;
-	
 	private String rest_menulink;
+	@OneToMany
+	@JoinTable(name = "menu", 
+	             joinColumns = @JoinColumn(name = "fk_id"))  
+	private List<Menu> menu;
 	public int getId() {
 		return id;
 	}
@@ -70,8 +79,14 @@ public class Restaurant {
 	public void setRest_menulink(String rest_menulink) {
 		this.rest_menulink = rest_menulink;
 	}
+	public List<Menu> getMenu() {
+		return menu;
+	}
+	public void setMenu(List<Menu> menu) {
+		this.menu = menu;
+	}
 	public Restaurant(int id, String rest_name, String rest_address, String ratings, String delivery_time, String cost,
-			String image_Url, String rest_menulink) {
+			String image_Url, String rest_menulink, List<Menu> menu) {
 		super();
 		this.id = id;
 		this.rest_name = rest_name;
@@ -81,10 +96,13 @@ public class Restaurant {
 		this.cost = cost;
 		this.image_Url = image_Url;
 		this.rest_menulink = rest_menulink;
+		this.menu = menu;
 	}
 	public Restaurant() {
 		super();
-	}
+	}  
+	
+	
 	
 	
 }
