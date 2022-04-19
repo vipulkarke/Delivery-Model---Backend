@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.bezkoder.spring.login.models.Restaurant;
 import com.bezkoder.spring.login.repository.RestaurantRepository;
@@ -26,5 +27,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public Restaurant get_A_User(Integer id) {
 		return restRepo.findById(id).orElseThrow();
 	}
+	@Override
+	public Restaurant addRestaurant(Restaurant restaurant) {
+		return restRepo.save(restaurant);
+	}
+	
+	@Override
+	public void deleteRestaurant(Integer id) {
+		restRepo.deleteRestaurantById(id);
+	}
+	
+
+	
 
 }

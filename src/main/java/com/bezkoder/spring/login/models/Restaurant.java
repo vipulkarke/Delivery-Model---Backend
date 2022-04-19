@@ -100,7 +100,14 @@ public class Restaurant {
 	}
 	public Restaurant() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "Restaurant [id=" + id + ", rest_name=" + rest_name + ", rest_address=" + rest_address + ", ratings="
+				+ ratings + ", delivery_time=" + delivery_time + ", cost=" + cost + ", image_Url=" + image_Url
+				+ ", rest_menulink=" + rest_menulink + ", menu=" + menu + "]";
 	}  
+	
 	
 	
 	
