@@ -195,6 +195,13 @@ public class AuthController {
 		restService.deleteRestaurant(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/menu")
+	public ResponseEntity<List<Menu>> getAllMenu() {
+		List<Menu> getall = menuService.All();
+		return new ResponseEntity<List<Menu>>(getall, HttpStatus.OK);
+	}
+
 
 	@GetMapping("/mcdonald_menu")
 	public ResponseEntity<List<Mcdonald_menu>> getAll() {
@@ -223,6 +230,12 @@ public class AuthController {
 	@PostMapping("/add")
 	public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
 		Restaurant newRestaurant = restService.addRestaurant(restaurant);
+		return new ResponseEntity<>(newRestaurant, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/addmenu")
+	public ResponseEntity<Menu> addMenu(@RequestBody Menu menu) {
+		Menu newRestaurant = menuService.AddMenu(menu);
 		return new ResponseEntity<>(newRestaurant, HttpStatus.CREATED);
 	}
 

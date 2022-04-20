@@ -17,8 +17,7 @@ public class Menu {
 	BigDecimal food_cost ;
 	String food_image;
 	String food_categorie;
-	
-	
+	int menu_food_id;
 	public int getFood_id() {
 		return food_id;
 	}
@@ -61,8 +60,14 @@ public class Menu {
 	public void setFood_categorie(String food_categorie) {
 		this.food_categorie = food_categorie;
 	}
+	public int getMenu_food_id() {
+		return menu_food_id;
+	}
+	public void setMenu_food_id(int menu_food_id) {
+		this.menu_food_id = menu_food_id;
+	}
 	public Menu(int food_id, int fk_id, String food_name, String food_disc, BigDecimal food_cost, String food_image,
-			String food_categorie) {
+			String food_categorie, int menu_food_id) {
 		super();
 		this.food_id = food_id;
 		this.fk_id = fk_id;
@@ -71,9 +76,9 @@ public class Menu {
 		this.food_cost = food_cost;
 		this.food_image = food_image;
 		this.food_categorie = food_categorie;
+		this.menu_food_id = menu_food_id;
 	}
-	public Menu() {
-		super();
-	}
+	
+
 	
 }
